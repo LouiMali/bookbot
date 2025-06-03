@@ -1,10 +1,15 @@
 
+import sys
 from stats import word_count
 from stats import count_characters
 from stats import naming_keys
 
 def main():
-    book_path = "books/frankenstein.txt"
+    if len(sys.argv) == 2:
+        book_path = sys.argv[1]
+    else:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
     book_text = get_book_text(book_path)
     num_words = word_count(book_text)
     character_count = count_characters(book_text)
